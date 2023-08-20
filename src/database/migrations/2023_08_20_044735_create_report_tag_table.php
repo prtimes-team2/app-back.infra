@@ -14,8 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('report_tag', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('tag_id')->constrained();
+            $table->foreignId('report_id')->constrained();
+            $table->boolean('isExist')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+            $table->primary(['tag_id', 'report_id']);
         });
     }
 

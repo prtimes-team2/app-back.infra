@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('imageurls', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('report_id')->constrained();
+            $table->string('ImageUrl', 300)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

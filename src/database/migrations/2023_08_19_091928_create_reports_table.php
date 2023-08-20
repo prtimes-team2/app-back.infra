@@ -15,7 +15,14 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('title', 30)->nullable();
+            $table->string('content', 300)->nullable();
+            $table->string('address', 30)->nullable();
+            $table->float('lat', 4, 16)->nullable();
+            $table->float('lng', 4, 16)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
