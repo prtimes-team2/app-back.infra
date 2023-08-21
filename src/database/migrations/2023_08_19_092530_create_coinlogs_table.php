@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('coinlogs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->bigInteger('amount')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
